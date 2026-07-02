@@ -129,12 +129,14 @@ const Create = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white space-y-6 shadow-xl/30 inset-shadow-xs  border-gray rounded-md my-9 ">
-      <h1 className="text-2xl font-bold text-gray-800">Create Your Products</h1>
+    <div className="max-w-2xl mx-auto p-6 bg-white dark:bg-gray-900 space-y-6 shadow-xl border border-gray-200 dark:border-gray-800 rounded-md my-9 text-gray-950 dark:text-gray-50 transition-colors duration-300">
+      <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
+        Create Your Products
+      </h1>
 
-      {/* Input Block 1 */}
+      {/* Input Name */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 block">
           Product's Name
         </label>
         <input
@@ -142,16 +144,16 @@ const Create = () => {
           id="name"
           defaultValue=""
           ref={nameRef}
-          className="w-full border border-gray-300 rounded p-2 text-sm"
+          className="w-full border border-gray-300 dark:border-gray-700 rounded p-2 text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-colors duration-300"
         />
         {errors && errors.name && (
           <div className="text-red-500 text-xs mt-1">{errors.name}</div>
         )}
       </div>
 
-      {/* Input Block 2 */}
+      {/* Input Price */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 block">
           Price
         </label>
         <input
@@ -159,16 +161,16 @@ const Create = () => {
           id="price"
           defaultValue=""
           ref={priceRef}
-          className="w-full border border-gray-300 rounded p-2 text-sm"
+          className="w-full border border-gray-300 dark:border-gray-700 rounded p-2 text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-colors duration-300"
         />
         {errors && errors.price && (
           <div className="text-red-500 text-xs mt-1">{errors.price}</div>
         )}
       </div>
 
-      {/* Input Block 3 */}
+      {/* Input Qty */}
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 block">
           Qty
         </label>
         <input
@@ -176,7 +178,7 @@ const Create = () => {
           id="qty"
           defaultValue=""
           ref={qtyRef}
-          className="w-full border border-gray-300 rounded p-2 text-sm"
+          className="w-full border border-gray-300 dark:border-gray-700 rounded p-2 text-sm bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-colors duration-300"
         />
         {errors && errors.qty && (
           <div className="text-red-500 text-xs mt-1">{errors.qty}</div>
@@ -187,14 +189,14 @@ const Create = () => {
       <div className="pt-2">
         {isEdit ? (
           <button
-            className="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700"
+            className="bg-blue-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-blue-700 transition-colors"
             onClick={() => updateProduct(editId)}
           >
             Update
           </button>
         ) : (
           <button
-            className="bg-green-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-green-500"
+            className="bg-green-600 text-white px-4 py-2 rounded text-sm font-medium hover:bg-green-500 transition-colors"
             onClick={createProduct}
           >
             Create Product
@@ -203,46 +205,66 @@ const Create = () => {
       </div>
 
       {/* Showing Products Table */}
-      <h1 className="text-xl font-bold text-gray-800 pt-6">Products Listing</h1>
+      <h1 className="text-xl font-bold text-gray-800 dark:text-white pt-6">
+        Products Listing
+      </h1>
 
-      <table className="w-full border-collapse border border-gray-200 text-sm text-left">
+      <table className="w-full border-collapse border border-gray-200 dark:border-gray-700 text-sm text-left transition-colors duration-300">
         <thead>
-          <tr className="bg-gray-100">
-            <th className="border border-gray-200 p-2">Product Name</th>
-            <th className="border border-gray-200 p-2">Price</th>
-            <th className="border border-gray-200 p-2">Qty</th>
-            <th className="border border-gray-200 p-2">Total Amount</th>
-            <th colSpan="2" className="border border-gray-200 p-2 text-center">
+          <tr className="bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+            <th className="border border-gray-200 dark:border-gray-700 p-2">
+              Product Name
+            </th>
+            <th className="border border-gray-200 dark:border-gray-700 p-2">
+              Price
+            </th>
+            <th className="border border-gray-200 dark:border-gray-700 p-2">
+              Qty
+            </th>
+            <th className="border border-gray-200 dark:border-gray-700 p-2">
+              Total Amount
+            </th>
+            <th
+              colSpan="2"
+              className="border border-gray-200 dark:border-gray-700 p-2 text-center"
+            >
               Action
             </th>
           </tr>
         </thead>
         <tbody>
           {products && products.length > 0 ? (
-            products.map((product, index) => {
+            products.map((product) => {
               return (
-                <tr key={product.id} className="hover:bg-gray-50">
-                  <td className="border border-gray-200 p-2">{product.name}</td>
-                  <td className="border border-gray-200 p-2">
+                <tr
+                  key={product.id}
+                  className="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
+                >
+                  <td className="border border-gray-200 dark:border-gray-700 p-2">
+                    {product.name}
+                  </td>
+                  <td className="border border-gray-200 dark:border-gray-700 p-2">
                     {product.price}ks
                   </td>
-                  <td className="border border-gray-200 p-2">{product.qty}</td>
-                  <td className="border border-gray-200 p-2">
+                  <td className="border border-gray-200 dark:border-gray-700 p-2">
+                    {product.qty}
+                  </td>
+                  <td className="border border-gray-200 dark:border-gray-700 p-2">
                     {product.totalAmount}ks
                   </td>
 
-                  <td className="border border-gray-200 p-2 text-center">
+                  <td className="border border-gray-200 dark:border-gray-700 p-2 text-center">
                     <button
-                      className="text-blue-600 font-medium hover:underline"
+                      className="text-blue-600 dark:text-blue-400 font-medium hover:underline"
                       onClick={() => editProduct(product.id)}
                     >
                       Edit
                     </button>
                   </td>
 
-                  <td className="border border-gray-200 p-2 text-center">
+                  <td className="border border-gray-200 dark:border-gray-700 p-2 text-center">
                     <button
-                      className="text-red-600 font-medium hover:underline"
+                      className="text-red-600 dark:text-red-400 font-medium hover:underline"
                       onClick={() => deleteProduct(product.id)}
                     >
                       Delete
@@ -255,9 +277,9 @@ const Create = () => {
             <tr>
               <th
                 colSpan="6"
-                className="border border-gray-200 p-4 text-center text-gray-400 font-normal"
+                className="border border-gray-200 dark:border-gray-700 p-4 text-center text-gray-400 dark:text-gray-500 font-normal"
               >
-                no record
+                Not found products
               </th>
             </tr>
           )}
